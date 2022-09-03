@@ -51,3 +51,10 @@ main {
   border: none;
   cursor: pointer;
 }
+
+.meme--image {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  display: block;
+}
