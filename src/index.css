@@ -16,7 +16,7 @@ main {
   display: flex;
   align-items: center;
   height: 65px;
-  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  background: linear-gradient(90deg, #4fbba0 1.18%, #26d365 100%);
   color: #fff;
   padding: 20px;
 }
@@ -46,7 +46,7 @@ main {
 .form--button {
   grid-column: 1 / -1;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  background: linear-gradient(90deg, #4fbba0 1.18%, #26d365 100%);
   color: #fff;
   border: none;
   cursor: pointer;
