@@ -8,17 +8,17 @@ export default function Meme() {
     bottomText: "",
   });
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData)
+  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
   function getMemeImage() {
     const memesArray = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url
+    const url = memesArray[randomNumber].url;
 
-    setMeme(preMeme => ({
+    setMeme((preMeme) => ({
       ...preMeme,
-      randomImage: url
-    }))
+      randomImage: url,
+    }));
   }
 
   return (
@@ -30,8 +30,10 @@ export default function Meme() {
           Get a new meme image
         </button>
       </div>
-      <div>
+      <div className="meme">
         <img src={meme.randomImage} className="meme--image" />
+        <h2 className="meme--text top">One does not simply</h2>
+        <h2 className="meme--text bottom">Walk into Mordor</h2>
       </div>
     </main>
   );
