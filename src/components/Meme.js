@@ -1,19 +1,24 @@
-import React from "react";
-import memesData from "../memeData";
+import React, { useState, useEffect } from "react";
 
 export default function Meme() {
-  const [meme, setMeme] = React.useState({
-    randomImage: "http://i.imgflip.com/1bij.jpg",
+  const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
   });
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
+  const [allMemes, setAllMemes] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
+  }, []);
 
   function getMemeImage() {
-    const memesArray = allMemeImages.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url;
+    // const memesArray = allMeme.data.memes;
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNumber].url;
 
     setMeme((preMeme) => ({
       ...preMeme,
@@ -22,22 +27,22 @@ export default function Meme() {
   }
 
   function handleChange(event) {
-    setMeme((prevMeme) => {
-      return {
-        ...prevMeme,
-        [event.target.name]: event.target.value
-      };
-    });
+    const { value, name } = event.target;
+    setMeme((preMeme) => ({
+      ...preMeme,
+      [name]: value,
+    }));
   }
 
   return (
     <main>
-      <form className="form">
+      <div className="form">
         <input
           type="text"
           placeholder="topText"
           onChange={handleChange}
           name="topText"
+          value={meme.topText}
         />
         <input
           type="text"
@@ -49,7 +54,7 @@ export default function Meme() {
         <button onClick={getMemeImage} className="form--button">
           Get a new meme image
         </button>
-      </form>
+      </div>
       <div className="meme">
         <img src={meme.randomImage} className="meme--image" />
         <h2 className="meme--text top">{meme.topText}</h2>
