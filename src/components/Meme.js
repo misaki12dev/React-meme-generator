@@ -39,14 +39,14 @@ export default function Meme() {
       <div className="form">
         <input
           type="text"
-          placeholder="topText"
+          placeholder="Type top text"
           onChange={handleChange}
           name="topText"
           value={meme.topText}
         />
         <input
           type="text"
-          placeholder="bottomText"
+          placeholder="Type bottom text"
           onChange={handleChange}
           name="bottomText"
           value={meme.bottomText}
